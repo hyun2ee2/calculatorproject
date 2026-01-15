@@ -18,5 +18,20 @@ public class Main {
 
         System.out.print("두번째 값을 입력해주세요. : ");
         int inputNumberTwo = number.nextInt();
+
+        // 조건문 : 연산자에 맞게 연산하여 출력
+        if(inputOperator.equals("+")) {
+            System.out.println("결과 값: " + (inputNumberOne + inputNumberTwo));
+        } else if(inputOperator.equals("-")) {
+            System.out.println("결과 값: " + (inputNumberOne - inputNumberTwo));
+        } else if(inputOperator.equalsIgnoreCase("X") || inputOperator.equals("*")) {
+            System.out.println("결과 값: " + (inputNumberOne * inputNumberTwo));
+        } else if(inputOperator.equals("/")) {
+            System.out.println("결과 값: " + (inputNumberOne / inputNumberTwo));
+        } else {
+            System.out.println("잘못된 연산자입니다. 다시 입력해주세요.");
+        }
+
+
     }
 }
