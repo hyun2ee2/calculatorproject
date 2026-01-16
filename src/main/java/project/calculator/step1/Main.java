@@ -17,11 +17,21 @@ public class Main {
             System.out.print("첫번째 값을 입력해주세요. : ");
             int inputNumberOne = number.nextInt();
 
+            if (inputNumberOne < 0) {
+                System.out.println("0을 포함한 양의 정수만 입력 가능합니다.");
+                return;
+            }
+
             System.out.print("연산자를 입력해주세요. : ");
             String inputOperator = operator.nextLine();
 
             System.out.print("두번째 값을 입력해주세요. : ");
             int inputNumberTwo = number.nextInt();
+
+            if (inputNumberTwo < 0) {
+                System.out.println("0을 포함한 양의 정수만 입력 가능합니다.");
+                return;
+            }
 
             // 조건문 : 연산자에 맞게 연산하여 출력
             if (inputOperator.equals("+")) {
@@ -31,15 +41,19 @@ public class Main {
             } else if (inputOperator.equalsIgnoreCase("X") || inputOperator.equals("*")) {
                 System.out.println("결과 값: " + (inputNumberOne * inputNumberTwo));
             } else if (inputOperator.equals("/")) {
-                System.out.println("결과 값: " + (inputNumberOne / inputNumberTwo));
+                if (inputNumberTwo == 0) {
+                    System.out.println("0으로 나눌 수 없습니다.");
+                } else {
+                    System.out.println("결과 값: " + (inputNumberOne / inputNumberTwo));
+                }
             } else {
                 System.out.println("잘못된 연산자입니다. 다시 입력해주세요.");
             }
 
             // 계속 계산을 진행할건지 사용자에게 물어봄 : 반복
             while (true) {
-            System.out.print("계산을 계속 진행하시겠습니까? (Y: 계속ㅣEXIT: 나가기) : ");
-            String inputOver = over.nextLine();
+                System.out.print("계산을 계속 진행하시겠습니까? (Y: 계속ㅣEXIT: 나가기) : ");
+                String inputOver = over.nextLine();
 
                 if (inputOver.equalsIgnoreCase("Y")) {
                     System.out.println("------------------------------------------------------------");
