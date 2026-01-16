@@ -70,10 +70,11 @@ public class Main {
             }
             if (complete) {
                 break;
-
             }
         }
-
-
+        // 스캐너 닫기
+        number.close();
+        operator.close();
+        over.close();
     }
 }
