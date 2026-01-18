@@ -1,13 +1,37 @@
 package project.calculator.step3;
 
 public enum OperatorType {
-    ADD('+'),
+    ADD('+') {
+        @Override
+        public double apply(double numberOne, double numberTwo) {
+            return numberOne + numberTwo;
+        }
+    },
 
-    SUB('-'),
+    SUB('-') {
+        @Override
+        public double apply(double numberOne, double numberTwo) {
+            return numberOne - numberTwo;
+        }
+    },
 
-    MUL('*'),
+    MUL('*') {
+        @Override
+        public double apply(double numberOne, double numberTwo) {
+            return numberOne * numberTwo;
+        }
+    },
 
-    DIV('/');
+    DIV('/') {
+        @Override
+        public double apply(double numberOne, double numberTwo) {
+            // 예외처리 : 0으로 나눌 수 없음
+            if(numberTwo == 0) {
+                throw new ArithmeticException("0으로 나눌 수 없습니다.");
+            }
+            return numberOne / numberTwo;
+        }
+    };
 
     private final char symbol;
 
@@ -15,6 +39,9 @@ public enum OperatorType {
     OperatorType(char symbol) {
         this.symbol = symbol;
     }
+
+    // 추상 메서드
+    public abstract double apply(double numberOne, double numberTwo);
 
     public static OperatorType fromChar(char operator) {
         for(OperatorType op : values()) {

@@ -20,25 +20,19 @@ public class Main {
         // 사용자로부터 값 입력 받기 : 반복
         while (true) {
             System.out.print("첫번째 값을 입력해주세요. : ");
-            int inputNumberOne = number.nextInt();
+            String inputNumberOne = number.next();
+            Number numberOne = inputNumberOne.contains(".") ? Double.parseDouble(inputNumberOne) : Integer.parseInt(inputNumberOne);
 
-            if (inputNumberOne < 0) {
-                System.out.println("0을 포함한 양의 정수만 입력 가능합니다.");
-                return;
-            }
 
             System.out.print("연산자를 입력해주세요. : ");
             char inputOperator = operator.next().charAt(0);
+            OperatorType operatorType = OperatorType.fromChar(inputOperator);
 
             System.out.print("두번째 값을 입력해주세요. : ");
-            int inputNumberTwo = number.nextInt();
+            String inputNumberTwo = number.next();
+            Number numberTwo = inputNumberTwo.contains(".") ? Double.parseDouble(inputNumberTwo) : Integer.parseInt(inputNumberTwo);
 
-            if (inputNumberTwo < 0) {
-                System.out.println("0을 포함한 양의 정수만 입력 가능합니다.");
-                return;
-            }
-
-            Integer result = calculator.calculator(inputNumberOne, inputNumberTwo, inputOperator);
+            double result = calculator.calculator(numberOne, numberTwo, operatorType);
             System.out.println("결과 : " + result);
 
             // 저장된 결과 가져오기 Getter
